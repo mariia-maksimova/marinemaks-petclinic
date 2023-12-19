@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>marinemaks</groupId>
-    <artifactId>marinemaks-petclinic</artifactId>
+    <artifactId>mm-petclinic</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>marinemaks-petclinic</name>
-    <description>marinemaks-petclinic</description>
+    <name>mm-petclinic</name>
+    <description>mm-petclinic</description>
     <properties>
         <java.version>17</java.version>
     </properties>
