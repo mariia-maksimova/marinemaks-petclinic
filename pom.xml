@@ -9,7 +9,7 @@
     </parent>
     <groupId>marinemaks</groupId>
     <artifactId>mm-petclinic</artifactId>
-    <version>0.0.2</version>
+    <version>0.0.3-SNAPSHOT</version>
 
     <packaging>pom</packaging>
 
@@ -51,6 +51,6 @@
 
     <scm>
         <developerConnection>scm:git:git@github.com:mariia-maksimova/mm-petclinic.git</developerConnection>
-      <tag>mm-petclinic-0.0.2</tag>
+      <tag>HEAD</tag>
   </scm>
 </project>
