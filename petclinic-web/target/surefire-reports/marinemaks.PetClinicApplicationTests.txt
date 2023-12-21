@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: marinemaks.PetClinicApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.446 s -- in marinemaks.PetClinicApplicationTests
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.575 s -- in marinemaks.PetClinicApplicationTests
