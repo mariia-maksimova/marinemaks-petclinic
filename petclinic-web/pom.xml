@@ -4,7 +4,7 @@
     <parent>
         <groupId>marinemaks</groupId>
         <artifactId>mm-petclinic</artifactId>
-        <version>0.0.2-SNAPSHOT</version>
+        <version>0.0.2</version>
     </parent>
 
     <artifactId>petclinic-web</artifactId>
@@ -19,7 +19,7 @@
         <dependency>
             <groupId>marinemaks</groupId>
             <artifactId>petclinic-data</artifactId>
-            <version>0.0.2-SNAPSHOT</version>
+            <version>0.0.2</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
