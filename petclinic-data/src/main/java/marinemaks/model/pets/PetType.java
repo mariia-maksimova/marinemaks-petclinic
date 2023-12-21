@@ -1,6 +1,8 @@
 package marinemaks.model.pets;
 
-public class PetType {
+import marinemaks.model.BaseEntity;
+
+public class PetType extends BaseEntity {
     private String name;
 
     public String getName() {

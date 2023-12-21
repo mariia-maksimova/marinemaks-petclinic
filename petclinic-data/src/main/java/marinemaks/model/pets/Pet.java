@@ -1,10 +1,11 @@
 package marinemaks.model.pets;
 
+import marinemaks.model.BaseEntity;
 import marinemaks.model.persons.Owner;
 
 import java.time.LocalDate;
 
-public class Pet {
+public class Pet extends BaseEntity {
     private PetType petType;
     private Owner owner;
     private LocalDate birthDate;

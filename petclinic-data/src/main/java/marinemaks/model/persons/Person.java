@@ -1,6 +1,8 @@
 package marinemaks.model.persons;
 
-public class Person {
+import marinemaks.model.BaseEntity;
+
+public class Person extends BaseEntity {
     private String firstName;
     private String lastName;
 
