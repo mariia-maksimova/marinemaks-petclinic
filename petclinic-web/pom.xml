@@ -2,7 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>marinemaks</groupId>
+        <groupId>mm</groupId>
         <artifactId>mm-petclinic</artifactId>
         <version>0.0.3-SNAPSHOT</version>
     </parent>
@@ -17,7 +17,7 @@
 
     <dependencies>
         <dependency>
-            <groupId>marinemaks</groupId>
+            <groupId>mm</groupId>
             <artifactId>petclinic-data</artifactId>
             <version>0.0.3-SNAPSHOT</version>
         </dependency>

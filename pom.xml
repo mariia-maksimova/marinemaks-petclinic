@@ -7,7 +7,7 @@
         <version>3.2.0</version>
         <relativePath /> <!-- lookup parent from repository -->
     </parent>
-    <groupId>marinemaks</groupId>
+    <groupId>mm</groupId>
     <artifactId>mm-petclinic</artifactId>
     <version>0.0.3-SNAPSHOT</version>
 
