@@ -14,14 +14,14 @@ public class DataLoader implements CommandLineRunner {
     private final OwnerService ownerService;
     private final VetService vetService;
 
-    public DataLoader() {
-        this.ownerService = new OwnerServiceMap();
-        this.vetService = new VetServiceMap();
+    public DataLoader(OwnerService ownerService, VetService vetService) {
+        this.ownerService = ownerService;
+        this.vetService = vetService;
     }
 
     @Override
     public void run(String... args) throws Exception {
-        System.out.println("Hello World!");
+        System.out.println("Started loading data...");
 
         Owner owner1 = new Owner();
         owner1.setId(1L);
@@ -37,7 +37,7 @@ public class DataLoader implements CommandLineRunner {
 
         ownerService.save(owner2);
 
-        System.out.println("Loaded Owners...");
+        System.out.println("Loaded Owners.");
 
         Vet vet1 = new Vet();
         vet1.setId(1L);
@@ -53,7 +53,9 @@ public class DataLoader implements CommandLineRunner {
 
         vetService.save(vet2);
 
-        System.out.println("Loaded Vets...");
+        System.out.println("Loaded Vets.");
+
+        System.out.println("Finished loading data.");
 
     }
 }
