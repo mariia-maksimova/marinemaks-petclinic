@@ -1,23 +1,27 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'owners')}">
     <head>
         <meta charset="UTF-8">
         <title>Pet Clinic: Owners</title>
     </head>
     <body>
         <!--/*@thymesVar id="owner" type="java.util.List<mm.model.persons.Owner>"*/-->
-        <h1 th:text="'Owners page'">Owners page</h1>
-        <table>
-            <tr>
-                <th>Id</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-            </tr>
-            <tr th:each="owner : ${owners}">
-                <td th:text="${owner.id}">Id</td>
-                <td th:text="${owner.firstName}">First Name</td>
-                <td th:text="${owner.lastName}">Last Name</td>
-            </tr>
+        <h2 th:text="'Owners page'">Owners page</h2>
+        <table class="table table-striped">
+            <thead>
+                <tr class="table-header header">
+                    <th>Id</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="owner : ${owners}">
+                    <td th:text="${owner.id}">Id</td>
+                    <td th:text="${owner.firstName}">First Name</td>
+                    <td th:text="${owner.lastName}">Last Name</td>
+                </tr>
+            </tbody>
         </table>
     </body>
 </html>
