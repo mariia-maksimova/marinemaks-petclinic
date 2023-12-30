@@ -45,7 +45,7 @@ public abstract class AbstractMapService<T extends BaseEntity, ID extends Long> 
         } catch (NoSuchElementException e) {
             nextId = 1L;
         }
-        
+
         return nextId;
     }
 }
