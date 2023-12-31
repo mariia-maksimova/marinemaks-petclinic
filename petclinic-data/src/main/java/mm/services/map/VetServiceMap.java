@@ -8,6 +8,13 @@ import java.util.Set;
 
 @Service
 public class VetServiceMap extends AbstractMapService<Vet, Long> implements VetService {
+
+    private final SpecialtyServiceMap specialtyService;
+
+    public VetServiceMap(SpecialtyServiceMap specialtyService) {
+        this.specialtyService = specialtyService;
+    }
+
     @Override
     public Set<Vet> findAll() {
         return super.findAll();
@@ -25,6 +32,17 @@ public class VetServiceMap extends AbstractMapService<Vet, Long> implements VetS
 
     @Override
     public Vet save(Vet object) {
+
+        if (!object.getSpecialties().isEmpty()) {
+            object.getSpecialties().forEach(specialty -> {
+                if (specialty.getId() == null) {
+                    specialty.setId(specialtyService.save(specialty).getId());
+                }
+            });
+        } else {
+            throw new RuntimeException("Vet must have at least one specialty");
+        }
+
         return super.save(object);
     }
 

@@ -1,8 +1,10 @@
 package mm.services.map;
 
+import mm.model.Address;
 import mm.model.persons.owners.Owner;
 import mm.model.pets.Pet;
 import mm.model.pets.PetType;
+import mm.services.AddressService;
 import mm.services.OwnerService;
 import mm.services.PetService;
 import mm.services.PetTypeService;
@@ -15,10 +17,12 @@ public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements 
 
     private final PetTypeService petTypeService;
     private final PetService petService;
+    private final AddressService addressService;
 
-    public OwnerServiceMap(PetTypeService petTypeService, PetService petService) {
+    public OwnerServiceMap(PetTypeService petTypeService, PetService petService, AddressService addressService) {
         this.petTypeService = petTypeService;
         this.petService = petService;
+        this.addressService = addressService;
     }
 
     @Override
@@ -49,6 +53,12 @@ public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements 
                         pet.setId(savedPet.getId());
                     }
                 });
+            }
+            if (object.getAddress() != null) {
+                if (object.getAddress().getId() == null) {
+                    Address savedAddress = addressService.save(object.getAddress());
+                    object.setAddress(savedAddress);
+                }
             }
             return super.save(object);
         }
