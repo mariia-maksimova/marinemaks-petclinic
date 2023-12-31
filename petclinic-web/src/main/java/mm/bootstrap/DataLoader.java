@@ -1,13 +1,18 @@
 package mm.bootstrap;
 
+import mm.model.Address;
 import mm.model.persons.owners.Owner;
 import mm.model.persons.vets.Vet;
+import mm.model.pets.Pet;
 import mm.model.pets.PetType;
 import mm.services.OwnerService;
 import mm.services.PetTypeService;
 import mm.services.VetService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
+
+import java.time.LocalDate;
+import java.time.Month;
 
 @Component
 public class DataLoader implements CommandLineRunner {
@@ -51,11 +56,47 @@ public class DataLoader implements CommandLineRunner {
         owner1.setFirstName("Michael");
         owner1.setLastName("Weston");
 
+        Address address1 = new Address();
+        address1.setAddressLine1("123 Oxford Road");
+        address1.setAddressLine2("Apt. 123");
+        address1.setCity("Reading");
+        address1.setCounty("Berkshire");
+        address1.setPostcode("12345");
+
+        owner1.setAddress(address1);
+        owner1.setPhoneNumber("1234567890");
+
+        Pet nika = new Pet();
+        nika.setName("Nika");
+        nika.setPetType(savedCatType);
+        nika.setOwner(owner1);
+        nika.setBirthDate(LocalDate.of(2023, Month.MARCH,1));
+
+        owner1.getPets().add(nika);
+
         ownerService.save(owner1);
 
         Owner owner2 = new Owner();
         owner2.setFirstName("Fiona");
         owner2.setLastName("Glenanne");
+
+        Address address2 = new Address();
+        address2.setAddressLine1("321 London Road");
+        address2.setAddressLine2("Apt. 321");
+        address2.setCity("Oxford");
+        address2.setCounty("Oxfordshire");
+        address2.setPostcode("54321");
+
+        owner2.setAddress(address2);
+        owner2.setPhoneNumber("0987654321");
+
+        Pet milo = new Pet();
+        milo.setName("Milo");
+        milo.setPetType(savedDogType);
+        milo.setOwner(owner2);
+        milo.setBirthDate(LocalDate.of(2022, Month.JANUARY,1));
+
+        owner2.getPets().add(milo);
 
         ownerService.save(owner2);
 

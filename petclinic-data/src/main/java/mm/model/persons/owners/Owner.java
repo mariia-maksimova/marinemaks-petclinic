@@ -4,13 +4,14 @@ import mm.model.Address;
 import mm.model.persons.Person;
 import mm.model.pets.Pet;
 
+import java.util.HashSet;
 import java.util.Set;
 
 public class Owner extends Person {
 
     private Address address;
     private String phoneNumber;
-    private Set<Pet> pets;
+    private Set<Pet> pets = new HashSet<>();
 
     public Address getAddress() {
         return address;
