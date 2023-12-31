@@ -1,6 +1,6 @@
 package mm.services.map;
 
-import mm.model.persons.Vet;
+import mm.model.persons.vets.Vet;
 import mm.services.VetService;
 import org.springframework.stereotype.Service;
 

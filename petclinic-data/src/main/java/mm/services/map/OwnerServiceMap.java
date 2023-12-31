@@ -1,6 +1,6 @@
 package mm.services.map;
 
-import mm.model.persons.Owner;
+import mm.model.persons.owners.Owner;
 import mm.services.OwnerService;
 import org.springframework.stereotype.Service;
 

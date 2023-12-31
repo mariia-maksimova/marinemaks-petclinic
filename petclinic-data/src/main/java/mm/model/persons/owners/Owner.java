@@ -1,5 +1,6 @@
-package mm.model.persons;
+package mm.model.persons.owners;
 
+import mm.model.persons.Person;
 import mm.model.pets.Pet;
 
 import java.util.Set;

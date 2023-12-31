@@ -1,7 +1,7 @@
 package mm.model.pets;
 
 import mm.model.BaseEntity;
-import mm.model.persons.Owner;
+import mm.model.persons.owners.Owner;
 
 import java.time.LocalDate;
 

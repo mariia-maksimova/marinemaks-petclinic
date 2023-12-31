@@ -1,11 +1,9 @@
 package mm.bootstrap;
 
-import mm.model.persons.Owner;
-import mm.model.persons.Vet;
+import mm.model.persons.owners.Owner;
+import mm.model.persons.vets.Vet;
 import mm.services.OwnerService;
 import mm.services.VetService;
-import mm.services.map.OwnerServiceMap;
-import mm.services.map.VetServiceMap;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
