@@ -12,7 +12,7 @@ import java.util.Set;
 
 @Service
 @AllArgsConstructor
-@Profile("springdatajpa")
+@Profile("spring-data-jpa")
 public class PetTypeSPJpaService implements PetTypeService {
 
     private final PetTypeRepository petTypeRepository;

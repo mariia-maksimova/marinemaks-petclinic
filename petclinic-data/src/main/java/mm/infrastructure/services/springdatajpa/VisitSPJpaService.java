@@ -1,7 +1,6 @@
 package mm.infrastructure.services.springdatajpa;
 
 import lombok.AllArgsConstructor;
-import mm.domain.persons.vets.Vet;
 import mm.domain.visits.Visit;
 import mm.infrastructure.repositories.VisitRepository;
 import mm.infrastructure.services.VisitService;
@@ -13,7 +12,7 @@ import java.util.Set;
 
 @Service
 @AllArgsConstructor
-@Profile("springdatajpa")
+@Profile("spring-data-jpa")
 public class VisitSPJpaService implements VisitService {
     private final VisitRepository visitRepository;
 

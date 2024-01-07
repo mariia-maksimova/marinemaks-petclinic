@@ -12,7 +12,7 @@ import java.util.Set;
 
 @Service
 @AllArgsConstructor
-@Profile("springdatajpa")
+@Profile("spring-data-jpa")
 public class AddressSPJpaService implements AddressService {
 
     private final AddressRepository addressRepository;

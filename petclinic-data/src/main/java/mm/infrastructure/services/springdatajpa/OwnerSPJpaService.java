@@ -14,7 +14,7 @@ import java.util.Set;
 
 @Service
 @AllArgsConstructor
-@Profile("springdatajpa")
+@Profile("spring-data-jpa")
 public class OwnerSPJpaService implements OwnerService {
 
     private final OwnerRepository ownerRepository;

@@ -70,6 +70,8 @@ public class DataLoader implements CommandLineRunner {
                 "1234567890",
                 nika
         );
+        nika.setOwner(michael);
+        petService.save(nika);
 
         Address address2 = saveAddress(
                 "321 London Road",
@@ -86,6 +88,8 @@ public class DataLoader implements CommandLineRunner {
                 "0987654321",
                 milo
         );
+        milo.setOwner(fiona);
+        petService.save(milo);
 
         System.out.println("Loaded Owners.");
 
@@ -155,7 +159,7 @@ public class DataLoader implements CommandLineRunner {
         pet.setOwner(owner);
         pet.setBirthDate(birthDate);
 
-        return petService.save(pet);
+        return pet;
     }
 
     private Address saveAddress(

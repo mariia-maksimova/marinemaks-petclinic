@@ -8,11 +8,13 @@ import mm.domain.pets.PetType;
 import mm.infrastructure.services.AddressService;
 import mm.infrastructure.services.OwnerService;
 import mm.infrastructure.services.PetTypeService;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
 @Service
+@Profile({"default", "map"})
 public class OwnerMapService extends AbstractMapService<Owner, Long> implements OwnerService {
 
     private final PetTypeService petTypeService;

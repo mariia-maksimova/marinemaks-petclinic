@@ -2,11 +2,13 @@ package mm.infrastructure.services.map;
 
 import mm.domain.Address;
 import mm.infrastructure.services.AddressService;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
 @Service
+@Profile({"default", "map"})
 public class AddressMapService extends AbstractMapService<Address, Long> implements AddressService {
     @Override
     public Set<Address> findAll() {
