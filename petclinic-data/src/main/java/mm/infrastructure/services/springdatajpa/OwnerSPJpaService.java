@@ -6,7 +6,6 @@ import mm.infrastructure.repositories.OwnerRepository;
 import mm.infrastructure.repositories.PetRepository;
 import mm.infrastructure.repositories.PetTypeRepository;
 import mm.infrastructure.services.OwnerService;
-import mm.infrastructure.services.PetService;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 

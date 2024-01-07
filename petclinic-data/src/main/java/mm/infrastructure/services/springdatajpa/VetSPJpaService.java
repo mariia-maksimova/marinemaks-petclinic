@@ -1,7 +1,6 @@
 package mm.infrastructure.services.springdatajpa;
 
 import lombok.AllArgsConstructor;
-import mm.domain.persons.owners.Owner;
 import mm.domain.persons.vets.Vet;
 import mm.infrastructure.repositories.VetRepository;
 import mm.infrastructure.services.VetService;
@@ -14,7 +13,7 @@ import java.util.Set;
 @Service
 @AllArgsConstructor
 @Profile("springdatajpa")
-public class VetSPJpaService extends VetService {
+public class VetSPJpaService implements VetService {
 
     private final VetRepository vetRepository;
 
