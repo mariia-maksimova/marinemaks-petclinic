@@ -1,16 +1,15 @@
 package mm.infrastructure.services.map;
 
-import mm.domain.pets.PetType;
-import mm.infrastructure.services.PetTypeService;
+import mm.domain.Address;
+import mm.infrastructure.services.AddressService;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
 @Service
-public class PetTypeServiceMap extends AbstractMapService<PetType, Long> implements PetTypeService {
-
+public class AddressMapService extends AbstractMapService<Address, Long> implements AddressService {
     @Override
-    public Set<PetType> findAll() {
+    public Set<Address> findAll() {
         return super.findAll();
     }
 
@@ -20,17 +19,17 @@ public class PetTypeServiceMap extends AbstractMapService<PetType, Long> impleme
     }
 
     @Override
-    public void delete(PetType object) {
+    public void delete(Address object) {
         super.delete(object);
     }
 
     @Override
-    public PetType save(PetType object) {
+    public Address save(Address object) {
         return super.save(object);
     }
 
     @Override
-    public PetType findById(Long id) {
+    public Address findById(Long id) {
         return super.findById(id);
     }
 }
