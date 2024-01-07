@@ -2,6 +2,7 @@ package mm.domain.visits;
 
 import jakarta.persistence.*;
 import mm.domain.BaseEntity;
+import mm.domain.persons.vets.Vet;
 import mm.domain.pets.Pet;
 
 import java.time.LocalDateTime;
@@ -17,6 +18,9 @@ public class Visit extends BaseEntity {
     @ManyToOne
     @JoinColumn(name = "pet_id")
     private Pet pet;
+    @ManyToOne
+    @JoinColumn(name = "vet_id")
+    private Vet vet;
 
     public LocalDateTime getDateTime() {
         return dateTime;
@@ -40,5 +44,13 @@ public class Visit extends BaseEntity {
 
     public void setPet(Pet pet) {
         this.pet = pet;
+    }
+
+    public Vet getVet() {
+        return vet;
+    }
+
+    public void setVet(Vet vet) {
+        this.vet = vet;
     }
 }
