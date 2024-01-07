@@ -12,7 +12,7 @@ import java.util.Set;
 @Table(name = "owners")
 public class Owner extends Person {
 
-    @Column(name = "address")
+    @ManyToOne
     private Address address;
     @Column(name = "phone_number")
     private String phoneNumber;
