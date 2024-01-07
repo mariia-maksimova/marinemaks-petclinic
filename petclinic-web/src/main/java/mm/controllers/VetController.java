@@ -1,6 +1,6 @@
 package mm.controllers;
 
-import mm.services.VetService;
+import mm.infrastructure.services.VetService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;

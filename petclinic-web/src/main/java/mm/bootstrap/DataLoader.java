@@ -1,12 +1,12 @@
 package mm.bootstrap;
 
-import mm.model.Address;
-import mm.model.persons.owners.Owner;
-import mm.model.persons.vets.Specialty;
-import mm.model.persons.vets.Vet;
-import mm.model.pets.Pet;
-import mm.model.pets.PetType;
-import mm.services.*;
+import mm.domain.Address;
+import mm.domain.persons.owners.Owner;
+import mm.domain.persons.vets.Specialty;
+import mm.domain.persons.vets.Vet;
+import mm.domain.pets.Pet;
+import mm.domain.pets.PetType;
+import mm.infrastructure.services.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
