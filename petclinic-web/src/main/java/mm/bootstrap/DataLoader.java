@@ -1,6 +1,8 @@
 package mm.bootstrap;
 
 import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import mm.domain.Address;
 import mm.domain.persons.owners.Owner;
 import mm.domain.persons.vets.Specialty;
@@ -15,10 +17,12 @@ import org.springframework.stereotype.Component;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Month;
+import java.util.HashSet;
 import java.util.Set;
 
 @Component
 @AllArgsConstructor
+@Slf4j
 public class DataLoader implements CommandLineRunner {
     private final OwnerService ownerService;
     private final VetService vetService;
@@ -38,21 +42,21 @@ public class DataLoader implements CommandLineRunner {
     }
 
     private void loadMockData() {
-        System.out.println("Started loading data...");
+        log.info("Started loading data...");
 
         PetType savedDogType = savePetType("Dog");
         PetType savedCatType = savePetType("Cat");
         PetType savedParrotType = savePetType("Parrot");
         PetType savedHamsterType = savePetType("Hamster");
 
-        System.out.println("Loaded Pet Types.");
+        log.info("Loaded Pet Types.");
 
         // Setting up Specialties
         Specialty savedRadiology = saveSpecialty("Radiology");
         Specialty savedSurgery = saveSpecialty("Surgery");
         Specialty savedDentistry = saveSpecialty("Dentistry");
 
-        System.out.println("Loaded Specialties.");
+        log.info("Loaded Specialties.");
 
         // Setting up Owners
         Address address1 = saveAddress(
@@ -62,16 +66,14 @@ public class DataLoader implements CommandLineRunner {
                 "London",
                 "12345"
         );
-        Pet nika = createPet("Nika", savedCatType, null, LocalDate.of(2023, Month.MARCH,1));
+
         Owner michael = saveOwner(
                 "Michael",
                 "Weston",
                 address1,
-                "1234567890",
-                nika
+                "1234567890"
         );
-        nika.setOwner(michael);
-        petService.save(nika);
+        Pet nika = createPet("Nika", savedCatType, michael, LocalDate.of(2023, Month.MARCH,1));
 
         Address address2 = saveAddress(
                 "321 London Road",
@@ -80,24 +82,22 @@ public class DataLoader implements CommandLineRunner {
                 "Oxfordshire",
                 "54321"
         );
-        Pet milo = createPet("Milo", savedDogType, null, LocalDate.of(2022, Month.JANUARY,1));
+
         Owner fiona = saveOwner(
                 "Fiona",
                 "Glenanne",
                 address2,
-                "0987654321",
-                milo
+                "0987654321"
         );
-        milo.setOwner(fiona);
-        petService.save(milo);
+        Pet milo = createPet("Milo", savedDogType, fiona, LocalDate.of(2022, Month.JANUARY,1));
 
-        System.out.println("Loaded Owners.");
+        log.info("Loaded Owners.");
 
         // Setting up Vets
         Vet vetSam = saveVet("Sam", "Axe", Set.of(savedRadiology, savedSurgery));
         Vet vetJessie = saveVet("Jessie", "Porter", Set.of(savedDentistry));
 
-        System.out.println("Loaded Vets.");
+        log.info("Loaded Vets.");
 
         // Setting up Visits
         Visit miloVisit1 = saveVisit(milo, LocalDateTime.of(2021, Month.JANUARY, 1, 12, 0),
@@ -108,26 +108,27 @@ public class DataLoader implements CommandLineRunner {
         Visit nikaVisit1 = saveVisit(nika, LocalDateTime.of(2021, Month.MARCH, 1, 12, 0),
                 "Sneezy Kitty", vetSam);
 
-        System.out.println("Loaded Visits.");
+        log.info("Loaded Visits.");
 
-        System.out.println("Finished loading data.");
+        log.info("Finished loading data.");
     }
 
     private Visit saveVisit(Pet pet, LocalDateTime dateTime, String description, Vet vet) {
-        Visit visit = new Visit();
-        visit.setPet(pet);
-        visit.setDateTime(dateTime);
-        visit.setDescription(description);
-        visit.setVet(vet);
-
+        Visit visit = Visit.builder()
+                .pet(pet)
+                .dateTime(dateTime)
+                .description(description)
+                .vet(vet)
+                .build();
         return visitService.save(visit);
     }
 
     private Vet saveVet(String firstName, String lastName, Set<Specialty> specialtySet) {
-        Vet vet1 = new Vet();
-        vet1.setFirstName(firstName);
-        vet1.setLastName(lastName);
-        vet1.getSpecialties().addAll(specialtySet);
+        Vet vet1 = Vet.builder()
+                .firstName(firstName)
+                .lastName(lastName)
+                .specialties(specialtySet)
+                .build();
 
         return vetService.save(vet1);
     }
@@ -136,30 +137,30 @@ public class DataLoader implements CommandLineRunner {
             String firstName,
             String lastName,
             Address address,
-            String phoneNumber,
-            Pet pet
+            String phoneNumber
     ) {
-        Owner owner = new Owner();
-        owner.setFirstName(firstName);
-        owner.setLastName(lastName);
-
-        owner.setAddress(address);
-        owner.setPhoneNumber(phoneNumber);
-
-        pet.setOwner(owner);
-        owner.getPets().add(pet);
+        Owner owner = Owner.builder()
+                .firstName(firstName)
+                .lastName(lastName)
+                .address(address)
+                .phoneNumber(phoneNumber)
+                .pets(new HashSet<>())
+                .build();
 
         return ownerService.save(owner);
     }
 
     private Pet createPet(String name, PetType petType, Owner owner, LocalDate birthDate) {
-        Pet pet = new Pet();
-        pet.setName(name);
-        pet.setPetType(petType);
-        pet.setOwner(owner);
-        pet.setBirthDate(birthDate);
+        Pet pet = Pet.builder()
+                .name(name)
+                .petType(petType)
+                .owner(owner)
+                .birthDate(birthDate)
+                .build();
 
-        return pet;
+        owner.getPets().add(pet);
+
+        return petService.save(pet);
     }
 
     private Address saveAddress(
@@ -169,26 +170,25 @@ public class DataLoader implements CommandLineRunner {
             String county,
             String postcode
     ) {
-        Address address = new Address();
-        address.setAddressLine1(addressLine1);
-        address.setAddressLine2(addressLine2);
-        address.setCity(city);
-        address.setCounty(county);
-        address.setPostcode(postcode);
+        Address address = Address.builder()
+                .addressLine1(addressLine1)
+                .addressLine2(addressLine2)
+                .city(city)
+                .county(county)
+                .postcode(postcode)
+                .build();
 
         return addressService.save(address);
     }
 
     private Specialty saveSpecialty(String description) {
-        Specialty specialty = new Specialty();
-        specialty.setDescription(description);
+        Specialty specialty = Specialty.builder().description(description).build();
 
         return specialtyService.save(specialty);
     }
 
     private PetType savePetType(String name) {
-        PetType petType = new PetType();
-        petType.setName(name);
+        PetType petType = PetType.builder().name(name).build();
 
         return petTypeService.save(petType);
     }
